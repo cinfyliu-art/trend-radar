@@ -66,18 +66,12 @@ platforms:
   api_url: ""                            # 热榜数据 API 地址（留空使用默认地址）
                                         # 如果你自行部署了 newsnow，填入你的地址，如: https://your-domain.com/api/s
   sources:
-    - id: "douban"
-      name: "豆瓣"
-      expected_domain: "douban.com"
-    - id: "iqiyi-hot-ranklist"
-      name: "爱奇艺"
-      expected_domain: "iqiyi.com"
-    - id: "qqvideo-tv-hotsearch"
-      name: "腾讯视频"
-      expected_domain: "qq.com"
-    - id: "36kr"
-      name: "36氪"
-      expected_domain: "36kr.com"
+      - id: "weibo"
+      name: "微博"
+      expected_domain: "weibo.com"
+    - id: "douyin"
+      name: "抖音"
+      expected_domain: "douyin.com"
     - id: "ithome"
       name: "IT之家"
       expected_domain: "ithome.com"
@@ -93,12 +87,6 @@ platforms:
     - id: "tieba"
       name: "贴吧"
       expected_domain: "baidu.com"
-    - id: "weibo"
-      name: "微博"
-      expected_domain: "weibo.com"
-    - id: "douyin"
-      name: "抖音"
-      expected_domain: "douyin.com"
     - id: "zhihu"
       name: "知乎"
       expected_domain: "zhihu.com"
@@ -114,7 +102,7 @@ platforms:
 # max_age_days: 可选，覆盖全局 freshness_filter.max_age_days
 # ===============================================================
 rss:
-  enabled: true                       # 是否启用 RSS 抓取（true=启用, false=关闭）
+  enabled: false                       # 是否启用 RSS 抓取（true=启用, false=关闭）
 
   # 文章新鲜度过滤（过滤超龄旧文章，避免重复推送）
   # 仅在推送阶段过滤，所有文章仍会存入数据库
@@ -165,14 +153,13 @@ report:
                                       # keyword = 按关键词分组显示
                                       # platform = 按平台/来源分组显示
 
-  sort_by_position_first: false       # 关键词模式排序（仅 display_mode=keyword 时生效）
+  sort_by_position_first: true       # 关键词模式排序（仅 display_mode=keyword 时生效）
                                       # true = 按 frequency_words.txt 的定义顺序
                                       # false = 按匹配到的热点条数排序（多的在前）
 
   rank_threshold: 5                   # 排名高亮阈值（影响展示强调，不改变抓取范围）
 
   max_news_per_keyword: 0             # 每个关键词/标签最大显示数量（0=不限制，仅影响展示裁剪）
-
 
 # ===============================================================
 # 4.5 筛选策略
