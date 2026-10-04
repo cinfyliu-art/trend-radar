@@ -66,27 +66,30 @@ platforms:
   api_url: ""                            # 热榜数据 API 地址（留空使用默认地址）
                                         # 如果你自行部署了 newsnow，填入你的地址，如: https://your-domain.com/api/s
   sources:
+    - id: "douban"
+      name: "豆瓣"
+      expected_domain: "douban.com"
+    - id: "iqiyi-hot-ranklist"
+      name: "爱奇艺"
+      expected_domain: "iqiyi.com"
+    - id: "qqvideo-tv-hotsearch"
+      name: "腾讯视频"
+      expected_domain: "qq.com"
+    - id: "36kr"
+      name: "36氪"
+      expected_domain: "36kr.com"
+    - id: "ithome"
+      name: "IT之家"
+      expected_domain: "ithome.com"
+    - id: "sspai"
+      name: "少数派"
+      expected_domain: "sspai.com"
     - id: "toutiao"
       name: "今日头条"
       expected_domain: "toutiao.com"
     - id: "baidu"
       name: "百度热搜"
       expected_domain: "baidu.com"
-    - id: "wallstreetcn-hot"
-      name: "华尔街见闻"
-      expected_domain: "wallstreetcn.com"
-    - id: "thepaper"
-      name: "澎湃新闻"
-      expected_domain: "thepaper.cn"
-    - id: "bilibili-hot-search"
-      name: "bilibili 热搜"
-      expected_domain: "bilibili.com"
-    - id: "cls-hot"
-      name: "财联社热门"
-      expected_domain: "cls.cn"
-    - id: "ifeng"
-      name: "凤凰网"
-      expected_domain: "ifeng.com"
     - id: "tieba"
       name: "贴吧"
       expected_domain: "baidu.com"
@@ -249,7 +252,10 @@ display:
     rss_feeds: []                                # RSS 源 ID 列表（如 ["hacker-news"]）
     max_items: 20                                # 每个源最多展示条数（0=不限制）
 
-
+report:
+  mode: "incremental"            # 只推新出现的，不再重复推
+  sort_by_position_first: true   # 按你上面定义的组顺序显示，影视/娱乐在最前
+  
 # ===============================================================
 # 6. 推送通知
 #
@@ -411,7 +417,7 @@ ai:
 # 9. AI 分析功能（模型配置见上方 ai 段）
 # ===============================================================
 ai_analysis:
-  enabled: true                     # 是否启用 AI 分析（true=启用, false=关闭）—— 总开关
+  enabled: false                     # 是否启用 AI 分析（true=启用, false=关闭）—— 总开关
                                     # 开启 schedule 后此项仍为总开关：false=永远不分析，true=由调度控制
 
   language: "Chinese"               # 分析报告语言（如 "English", "Korean", "法语"）
